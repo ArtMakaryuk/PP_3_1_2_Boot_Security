@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-
 public class UserServiceImpl implements UserService {
 
     private final RoleService roleService;
@@ -57,7 +56,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editUser(User user, Long[] roles) {
         addRole(user, roles);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (!user.getPassword().equals(findById(user.getId()).getPassword())) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         userDao.editUser(user);
     }
 

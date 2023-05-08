@@ -15,7 +15,7 @@ public interface UserService {
 
     void deleteById(Long id);
 
-    void editUser(User user, Long[] roles);
+    void editUser(User user, Long[] roless);
 
 
 }

@@ -16,7 +16,6 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 import java.util.List;
 
 
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -52,7 +51,7 @@ public class AdminController {
 
     @PostMapping("/users/save")
     public String create(@ModelAttribute("user") User user,
-                         @RequestParam(value = "roless") Long[] roles)  {
+                         @RequestParam(value = "roless") Long[] roles) {
         userService.saveUser(user, roles);
         return "redirect:/admin/users";
     }
